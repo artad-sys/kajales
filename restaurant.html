@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étterem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: #1e1e1e;
+            color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .back-btn, .dark-mode-toggle {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+
+        body.dark-mode .back-btn {
+            background-color: #0056b3;
+        }
+
+        body.dark-mode .back-btn:hover {
+            background-color: #003d82;
+        }
+
+        .dark-mode-toggle {
+            background-color: #ffc107;
+            color: #333;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: #e0a800;
+        }
+
+        body.dark-mode .dark-mode-toggle {
+            background-color: #444;
+            color: #ffc107;
+        }
+
+        body.dark-mode .dark-mode-toggle:hover {
+            background-color: #555;
+        }
+
+        .restaurant-info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-mode .restaurant-info {
+            background-color: #2a2a2a;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .restaurant-info h1 {
+            margin-bottom: 15px;
+            font-size: 28px;
+        }
+
+        .restaurant-info p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .menu-section {
+            margin-top: 20px;
+        }
+
+        .menu-section h2 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        body.dark-mode .menu-section h2 {
+            border-bottom-color: #0056b3;
+        }
+
+        .menu-content {
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            line-height: 1.8;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+
+        body.dark-mode .menu-content {
+            background-color: #333;
+            border-left-color: #0056b3;
+        }
+
+        .no-data {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            color: #999;
+        }
+
+        body.dark-mode .no-data {
+            background-color: #2a2a2a;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="back-btn" onclick="goBack()">← Vissza</button>
+            <button class="dark-mode-toggle" onclick="toggleDarkMode()">Világos / Sötét</button>
+        </div>
+
+        <div id="restaurantContent" class="no-data">
+            Az étterem adatai betöltésben...
+        </div>
+    </div>
+
+    <script>
+        // Dark mode kezelés
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        }
+
+        // Dark mode betöltés indításnál
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Vissza gomb
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+
+        // Étterem adatainak betöltése
+        async function loadRestaurant() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const restaurantId = params.get('id');
+
+                if (!restaurantId) {
+                    document.getElementById('restaurantContent').innerHTML = '<div class="no-data">Nincs étterem kiválasztva!</div>';
+                    return;
+                }
+
+                console.log('Keresett ID:', restaurantId);
+
+                // restaurants.json betöltése
+                const response = await fetch('restaurants.json');
+                if (!response.ok) {
+                    throw new Error('restaurants.json nem található!');
+                }
+
+                const restaurants = await response.json();
+                console.log('Betöltött éttermek:', restaurants);
+
+                const restaurant = restaurants.find(r => r.id == restaurantId);
+                console.log('Talált étterem:', restaurant);
+
+                if (!restaurant) {
+                    document.getElementById('restaurantContent').innerHTML = '<div class="no-data">Az étterem nem található!</div>';
+                    return;
+                }
+
+                // Étterem adatainak megjelenítése
+                let html = `
+                    <div class="restaurant-info">
+                        <h1>${restaurant.name}</h1>
+                        <p><strong>Cím:</strong> ${restaurant.address || 'Nincs megadva'}</p>
+                        <p><strong>Telefon:</strong> ${restaurant.phone || 'Nincs megadva'}</p>
+                        <p><strong>Email:</strong> ${restaurant.email || 'Nincs megadva'}</p>
+                `;
+
+                // Menü megjelenítése (string formátumban)
+                if (restaurant.menu && restaurant.menu.trim()) {
+                    html += `
+                        <div class="menu-section">
+                            <h2>Menü</h2>
+                            <div class="menu-content">${restaurant.menu}</div>
+                        </div>
+                    `;
+                } else {
+                    html += '<div class="menu-section"><p><em>Nincs menü megadva</em></p></div>';
+                }
+
+                html += '</div>';
+
+                document.getElementById('restaurantContent').innerHTML = html;
+
+            } catch (error) {
+                console.error('Hiba:', error);
+                document.getElementById('restaurantContent').innerHTML = `<div class="no-data">Hiba az étterem betöltésekor: ${error.message}</div>`;
+            }
+        }
+
+        // Oldal betöltésénél az étterem adatait töltjük be
+        loadRestaurant();
+    </script>
+</body>
+</html>

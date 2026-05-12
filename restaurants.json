@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1778547280541,
+    "name": "kjhkjhkjhkjh",
+    "address": "jjkljlllk",
+    "phone": "3333333",
+    "email": "bonyulultistvanne@gmail.com",
+    "menu": "*valami\n\nkicsi 1500\nnagy 2000"
+  },
+  {
+    "id": 1778548284215,
+    "name": "na nézzük",
+    "address": "nem",
+    "phone": "nem",
+    "email": "",
+    "menu": ""
+  },
+  {
+    "id": 1778548489319,
+    "name": "megdobálsz",
+    "address": "az nincs",
+    "phone": "2222",
+    "email": "artad.hegjesszi@outlook.com",
+    "menu": "*ezmegaz\n\nkicsi 1500\nnagy 2000\n"
+  },
+{
+    "id": 1778549051091,
+    "name": "cuncika",
+    "address": "muncika",
+    "phone": "222222",
+    "email": "cuncika@gmail.com",
+    "menu": "*hát nem\n\nde 1500\nnem 2000\n\n*rántott palizer\negész rúd 200 \n"
+  },
+  {
+    "id": 1778549157522,
+    "name": "árpika legjobb étterme",
+    "address": "mateszopszki utca",
+    "phone": "0690loveisintheair",
+    "email": "ezmegaz@ezmegaz",
+    "menu": "*előétel\n\nrántott hallé 1000\nbögre langyos zsír 800\n"
+  },
+  {
+    "id": 1778549204120,
+    "name": "cija aldamalda",
+    "address": "jucuska puszil",
+    "phone": "",
+    "email": "",
+    "menu": "*főétel\n\njucuska kedvenc kolbásza 4000\n"
+  }
+]
