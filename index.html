@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gasztró Kalauz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Étterem Kereső</h1>
+            <button id="theme-toggle">🌙/☀️</button>
+        </header>
+
+        <div class="search-box">
+            <input type="text" id="search" placeholder="Keress név vagy cím alapján..." onkeyup="search()">
+        </div>
+        
+        <div id="restaurant-list" class="grid"></div>
+    </div>
+
+    <script src="adatok.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function display(data) {
+            const list = document.getElementById('restaurant-list');
+            list.innerHTML = '';
+            // ABC sorrendbe rendezés megjelenítés előtt
+            const sorted = [...data].sort((a, b) => a.name.localeCompare(b.name));
+            
+            sorted.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <h3><a href="restaurant.html?id=${r.id}">${r.name}</a></h3>
+                    <p class="subtitle">${r.address || ''}</p>
+                `;
+                list.appendChild(card);
+            });
+        }
+
+        function search() {
+            const query = document.getElementById('search').value.toLowerCase();
+            const filtered = RESTAURANT_DATA.filter(r => 
+                r.name.toLowerCase().includes(query) || 
+                (r.address && r.address.toLowerCase().includes(query))
+            );
+            display(filtered);
+        }
+
+        // Indításkor betöltjük az adatokat a JS fájlból
+        display(RESTAURANT_DATA);
+    </script>
+</body>
+</html>

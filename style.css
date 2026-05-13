@@ -1,0 +1,222 @@
+/* Színváltozók és Alapbeállítások */
+:root {
+    --bg: #ffffff;
+    --text: #333333;
+    --card: #f9f9f9;
+    --accent: #d32f2f; /* Elegáns mélyvörös */
+    --input-bg: #ffffff;
+    --border: #dddddd;
+    --dots: #888888;
+}
+
+.dark-mode {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --card: #1e1e1e;
+    --accent: #ff5252; /* Élénkebb piros sötét módhoz */
+    --input-bg: #2d2d2d;
+    --border: #444444;
+    --dots: #666666;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    transition: background 0.3s, color 0.3s;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+/* Fejléc */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--accent);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
+/* Gombok */
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+    transition: opacity 0.2s;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#theme-toggle {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    font-size: 1.2rem;
+}
+
+/* Keresőmező (Főoldal) */
+.search-box {
+    margin-bottom: 30px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text);
+    font-size: 1rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Étterem kártyák (Főoldal) */
+.card {
+    background: var(--card);
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-left: 6px solid var(--accent);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    margin: 0 0 5px 0;
+}
+
+.card h3 a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Információs doboz (Étterem oldal) */
+.info-box {
+    background: var(--card);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    font-size: 0.95rem;
+}
+
+.info-box p {
+    margin: 8px 0;
+}
+
+/* Étlap stílusok */
+.menu-section h2 {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.menu-category {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin: 30px 0 15px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: baseline;
+    margin: 12px 0;
+    width: 100%;
+}
+
+.item-name {
+    flex-shrink: 0;
+    font-weight: 500;
+}
+
+.item-dots {
+    flex-grow: 1;
+    border-bottom: 2px dotted var(--dots);
+    margin: 0 10px;
+    height: 1px;
+    opacity: 0.5;
+}
+
+.item-price {
+    flex-shrink: 0;
+    font-weight: bold;
+    color: var(--text);
+}
+
+.simple-line {
+    margin: 5px 0;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Admin form elemek */
+.admin-form input, 
+.admin-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text);
+}
+
+/* Navigáció */
+.navigation {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.navigation a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Mobil optimalizálás */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    .item-dots {
+        margin: 0 5px;
+    }
+}

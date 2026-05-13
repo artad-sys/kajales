@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étlap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="r-name"></h1>
+            <button id="theme-toggle">🌙/☀️</button>
+        </header>
+
+        <div id="r-info" class="info-box"></div>
+        
+        <div class="menu-section">
+            <h2>Étlap</h2>
+            <div id="r-menu"></div>
+        </div>
+
+        <div class="navigation">
+            <a href="index.html">← Vissza a keresőhöz</a>
+        </div>
+    </div>
+
+    <!-- Fontos, hogy az adatok.js és a script.js be legyen töltve -->
+    <script src="adatok.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        
+        // Megkeressük az éttermet az adatok.js-ben lévő listából
+        const r = RESTAURANT_DATA.find(item => item.id == id);
+
+        if(r) {
+            document.title = r.name + " - Étlap";
+            document.getElementById('r-name').innerText = r.name;
+            document.getElementById('r-info').innerHTML = `
+                <p>📍 <strong>Cím:</strong> ${r.address || 'Nincs megadva'}</p>
+                <p>🕒 <strong>Nyitva:</strong> ${r.open || 'Nincs megadva'}</p>
+                ${r.phone ? `<p>📞 ${r.phone}</p>` : ''}
+                ${r.email ? `<p>✉️ ${r.email}</p>` : ''}
+            `;
+
+            // ITT TÖRTÉNIK AZ ÉTLAP FELDOLGOZÁSA:
+            const menuHtml = r.menu.split('\n').map(line => {
+                const trimmedLine = line.trim();
+                if(!trimmedLine) return ''; // Üres sorokat kihagyjuk
+
+                // Ha kategória (vastag betűs)
+                if(trimmedLine.startsWith('#')) {
+                    return `<h4 class="menu-category">${trimmedLine.replace('#', '').trim()}</h4>`;
+                }
+                
+                // Ha van benne kötőjel, akkor név és ár szétválasztása
+                if(trimmedLine.includes('-')) {
+                    const parts = trimmedLine.split('-');
+                    const name = parts[0].trim();
+                    const price = parts[1].trim();
+                    
+                    return `
+                        <div class="menu-item">
+                            <span class="item-name">${name}</span>
+                            <span class="item-dots"></span>
+                            <span class="item-price">${price}</span>
+                        </div>`;
+                }
+                
+                // Sima sor, ha nincs benne se # se -
+                return `<p class="simple-line">${trimmedLine}</p>`;
+            }).join('');
+            
+            document.getElementById('r-menu').innerHTML = menuHtml;
+        } else {
+            document.getElementById('r-menu').innerHTML = "Az étterem nem található.";
+        }
+    </script>
+</body>
+</html>
