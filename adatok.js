@@ -5,8 +5,8 @@ const RESTAURANT_DATA = [
     "address": "kaja",
     "open": "H-P 10-20",
     "phone": "06123455666",
-    "email": "kuki@nuni.com",
-    "menu": "#Előétel\n\npina 1500\nfasz 2000\n\n#Főétel\npina 1500\nfasz 2000"
+    "email": "kaja1@kaja1.com",
+    "menu": "#Előétel\n\nvalami - 1500\nde az nagyon - 2000\n\n# Főétel\naz ja - 1000\nbaz jabaz - 2000"
   },
   {
     "id": 1778636857225,
