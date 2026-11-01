@@ -45,15 +45,6 @@ const RESTAURANT_DATA = [
     "menu": ""
   },
   {
-    "id": 1793542500005,
-    "name": "Calypso Étterem",
-    "address": "8600 Siófok, Vécsey Károly utca vége",
-    "open": "",
-    "phone": "+36 30 685 9807",
-    "email": "info@calypsocafe.hu",
-    "menu": ""
-  },
-  {
     "id": 1793542500006,
     "name": "Tequila Taverna",
     "address": "8600 Siófok, Petőfi sétány 5",
@@ -378,15 +369,6 @@ const RESTAURANT_DATA = [
     "menu": ""
   },
   {
-    "id": 1793542500042,
-    "name": "Piroska Csárda",
-    "address": "8600 Siófok, Honvéd u. 1",
-    "open": "",
-    "phone": "+36 84 348 705",
-    "email": "",
-    "menu": ""
-  },
-  {
     "id": 1793542500043,
     "name": "Pasty House",
     "address": "8600 Siófok, Fő u. 107",
@@ -405,15 +387,6 @@ const RESTAURANT_DATA = [
     "menu": ""
   },
   {
-    "id": 1793542500045,
-    "name": "Calypso Café Bar & Grill",
-    "address": "8600 Siófok, Vécsey Károly u. vége",
-    "open": "",
-    "phone": "+36 30 685 9807",
-    "email": "info@calypsocafe.hu",
-    "menu": ""
-  },
-  {
     "id": 1793542500046,
     "name": "Ramirez étterem",
     "address": "8600 Siófok, Mártírok útja 15",
@@ -424,11 +397,20 @@ const RESTAURANT_DATA = [
   },
   {
     "id": 1793542500047,
-    "name": "Mustafa étterem és pizzéria ",
+    "name": "Mustafa étterem és pizzéria",
     "address": "8600 Siófok, Mártírok útja 9",
     "open": "",
     "phone": "+36 70 943 8078",
     "email": "mustafagyros@gmail.com",
+    "menu": ""
+  },
+  {
+    "id": 1793542500049,
+    "name": "Sanyi Sarok",
+    "address": "8600 Siófok Szabadifürdő, Posta utca 2",
+    "open": "",
+    "phone": "+36 30 541 0113",
+    "email": "info@sanyisarok",
     "menu": ""
   },
   {
@@ -437,7 +419,52 @@ const RESTAURANT_DATA = [
     "address": "8600 Siófok, Kinizsi Pál utca 11",
     "open": "",
     "phone": "+36 70 559 2517",
-    "email": "info@calypsocafe.hu",
+    "email": "",
+    "menu": ""
+  },
+  {
+    "id": 1793542500050,
+    "name": "Street Mix Kitchen",
+    "address": "8600 Siófok, Fő utca 234",
+    "open": "",
+    "phone": "+36 30 091 4700",
+    "email": "riti9173@gmail.com",
+    "menu": ""
+  },
+  {
+    "id": 1793542500051,
+    "name": "Kornélia cukrászda és pizzéria",
+    "address": "8600 Siófok, Estike utca 16/a",
+    "open": "",
+    "phone": "+36 20 479 67 45",
+    "email": "korneliasiofokgmail.com",
+    "menu": ""
+  },
+  {
+    "id": 1793542500052,
+    "name": "Charley Bisztró",
+    "address": "8600 Siófok, Fő utca 47-53",
+    "open": "",
+    "phone": "+36 30 70 333 00",
+    "email": "",
+    "menu": ""
+  },
+  {
+    "id": 1793542500053,
+    "name": "Boglya Kitchen",
+    "address": "8651 Balatonszabadi, Szabadság u. 79",
+    "open": "",
+    "phone": "+36 70 321 8062",
+    "email": "boglyamenu@gmail.com",
+    "menu": ""
+  },
+  {
+    "id": 1793542500054,
+    "name": "Urban Döner",
+    "address": "8600 Siófok, Szűcs utca 5",
+    "open": "",
+    "phone": "+36 30 597 9684",
+    "email": "",
     "menu": ""
   }
 ];
