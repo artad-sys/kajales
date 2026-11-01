@@ -475,5 +475,14 @@ const RESTAURANT_DATA = [
     "phone": "+36 70 633 2235",
     "email": "siopenthouse22@gmail.com",
     "menu": ""
+  },
+   {
+    "id": 1793542500056,
+    "name": "Cafe Spirit",
+    "address": "8600 Siófok, Fő utca 254/d",
+    "open": "",
+    "phone": "+36 20 278 0844",
+    "email": "info@cafespirit.hu",
+    "menu": ""
   }
 ];
