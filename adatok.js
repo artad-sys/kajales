@@ -466,5 +466,14 @@ const RESTAURANT_DATA = [
     "phone": "+36 30 597 9684",
     "email": "",
     "menu": ""
+  },
+  {
+    "id": 1793542500055,
+    "name": "Penthouse Bar&Pub",
+    "address": "8600 Siófok, Fő tér 6",
+    "open": "",
+    "phone": "+36 70 633 2235",
+    "email": "siopenthouse22@gmail.com",
+    "menu": ""
   }
 ];
